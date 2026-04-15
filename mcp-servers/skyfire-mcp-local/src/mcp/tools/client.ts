@@ -123,7 +123,7 @@ export async function getSellerResourceData()
                 "id": "786780c1-f413-43c9-bf7f-19e9e1ff00fc",
                 "name": "Dappier"
             },
-            "mcpServerUrl": "http://localhost:4002/mcp",
+            "mcpServerUrl": "https://dappier-keycloak-mcp-server.onrender.com/mcp",
             "acceptedTokens": [
                 "kya",
                 "pay",
