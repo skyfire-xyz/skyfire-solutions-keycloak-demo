@@ -1,0 +1,2 @@
+SESSION_ID=${1?provide session id}
+curl -v -X POST https://sky-mcp.onrender.com/mcp -d '{"jsonrpc": "2.0", "id": "101", "method": "tools/call", "params": {"protocolVersion": "123", "name": "create-pay-token", "arguments": {"amount": "0.1", "buyerTag": "5555748b-f2ce-4421-b021-705b63cc73bd", "sellerServiceId": "042aa019-6e8f-4ede-92c2-de6b49292e8b"}, "capabilities": {}, "clientInfo": {"name": "curl", "version": "123"}}}' -H "Content-Type: application/json" -H "skyfire-api-key: $(uuidgen)" -H "Accept: application/json, text/event-stream" -H "Mcp-session-id: $SESSION_ID"
