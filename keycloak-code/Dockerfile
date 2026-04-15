@@ -8,6 +8,9 @@ ENV KC_DB=postgres
 # Enable required features at build time
 ENV KC_FEATURES=preview,token-exchange:v1,admin-fine-grained-authz:v1
 
+# Build-time options (must be baked in before kc.sh build)
+ENV KC_HEALTH_ENABLED=true
+
 # Copy the custom Skyfire IDP provider
 COPY providers/skyfire-keycloak-idp-1.0.0.jar /opt/keycloak/providers/
 
@@ -24,8 +27,6 @@ COPY --from=builder /opt/keycloak /opt/keycloak
 ENV KC_HTTP_ENABLED=true
 ENV KC_PROXY_HEADERS=xforwarded
 ENV KC_HOSTNAME_STRICT=false
-# Expose health endpoints so Render's healthcheck path /health/ready works
-ENV KC_HEALTH_ENABLED=true
 
 # Port Keycloak listens on (must match the "Port" field in your Render service)
 EXPOSE 8080
