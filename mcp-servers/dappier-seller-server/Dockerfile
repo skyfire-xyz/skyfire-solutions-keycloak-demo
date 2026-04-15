@@ -3,8 +3,7 @@ FROM --platform=linux/amd64 node:20.16.0-alpine3.20 as build
 
 WORKDIR /app
 ARG NPM_TOKEN
-ENV NPM_TOKEN=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
-# $NPM_TOKEN
+ENV NPM_TOKEN=$NPM_TOKEN
 
 COPY package.json yarn.lock .npmrc ./
 RUN yarn install --frozen-lockfile
