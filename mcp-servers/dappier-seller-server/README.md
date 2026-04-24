@@ -16,7 +16,7 @@ Steps to be followed for setting up Auth0:
 1. Visit the [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
 2. Create a new tenant
 3. Follow the [Auth0 official documentation for creating a new custom token exchange profile](https://auth0.com/docs/authenticate/custom-token-exchange)
-4. [Sample code for creating Auth0 Action](https://github.com/skyfire-xyz/skyfire-solutions-okta-demo/tree/main/auth0/sample-action-code.ts) or refer to [Auth0 Marketplace implementation](https://github.com/dlozlla/opensource-marketplace/blob/feat-cte-template-skyfire-hardened/templates/skyfire-token-exchange-CUSTOM_TOKEN_EXCHANGE/code.js)
+4. [Sample code for creating Auth0 Action](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/auth0/sample-action-code.ts) or refer to [Auth0 Marketplace implementation](https://github.com/dlozlla/opensource-marketplace/blob/feat-cte-template-skyfire-hardened/templates/skyfire-token-exchange-CUSTOM_TOKEN_EXCHANGE/code.js)
    
 ## Installation
 
@@ -25,7 +25,7 @@ Steps to be followed for setting up Auth0:
     yarn install
     ```
 2. Follow the [Skyfire Platform Setup Guide](https://docs.skyfire.xyz/docs/introduction) to create seller account and seller services.
-3. Use the Auth0 Client ID, Client Secret, Domain etc details from Settings tab of your newly created Application in env variables in [Dappier MCP Server](https://github.com/skyfire-xyz/skyfire-solutions-okta-demo/tree/main/mcp-servers/dappier-seller-server).
+3. Use the Auth0 Client ID, Client Secret, Domain etc details from Settings tab of your newly created Application in env variables in [Dappier MCP Server](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/mcp-servers/dappier-seller-server).
 4. Set up environment variables:
     Create a `.env` file in the directory. You can copy `.env.example` if one exists, or add the necessary variables manually.
 

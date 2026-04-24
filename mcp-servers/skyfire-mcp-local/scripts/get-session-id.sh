@@ -1,2 +1,0 @@
-API_KEY=${1?please provide api key}
-curl -v -X POST localhost:4000/mcp -d '{"jsonrpc": "2.0", "id": "101", "method": "initialize", "params": {"protocolVersion": "123", "capabilities": {}, "clientInfo": {"name": "curl", "version": "123"}}}' -H "Content-Type: application/json" -H "skyfire-api-key: $API_KEY" -H "Accept: application/json, text/event-stream" 2>&1 | grep -i Mcp-Session-Id  | awk '{print $NF}' | tr -d '\n\r'

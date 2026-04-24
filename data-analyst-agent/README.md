@@ -13,7 +13,7 @@ Purchase a dataset for pickup truck sales
 ``` 
 
 ## Live Demo Link
-This demo agent is available [here](https://data-analyst-agent-okta-demo.skyfire.xyz/).
+This demo agent is available [here](https://data-analyst-agent-keycloak-demo.skyfire.xyz/).
 
 ## Installation
 

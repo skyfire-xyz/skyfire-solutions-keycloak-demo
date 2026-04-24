@@ -1,5 +1,5 @@
 {
-  "name": "data-analyst-okta-agent",
+  "name": "data-analyst-keycloak-agent",
   "version": "1.0.0",
   "private": true,
   "scripts": {

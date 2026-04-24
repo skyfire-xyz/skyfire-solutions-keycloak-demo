@@ -1,0 +1,5 @@
+com/example/keycloak/SkyfireIdentityProviderConfig.class
+com/example/keycloak/SkyfireIdentityProviderFactory.class
+com/example/keycloak/SkyfireIdentityProvider$CachedKey.class
+com/example/keycloak/SkyfireIdentityProvider.class
+com/example/keycloak/SkyfireIdentityProvider$JwkEcPublicKeyBuilder.class
