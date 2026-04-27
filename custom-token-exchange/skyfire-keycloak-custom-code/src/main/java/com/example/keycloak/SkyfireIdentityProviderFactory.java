@@ -10,7 +10,7 @@ import org.keycloak.provider.ProviderConfigProperty;
 public class SkyfireIdentityProviderFactory
     extends AbstractIdentityProviderFactory<SkyfireIdentityProvider> {
 
-    public static final String PROVIDER_ID = "skyfire-jwt";
+    public static final String PROVIDER_ID = "skyfire-idp (token-exchange)";
 
         private static final ProviderConfigProperty JWKS_URL = new ProviderConfigProperty(
             SkyfireIdentityProviderConfig.JWKS_URL,
@@ -35,7 +35,7 @@ public class SkyfireIdentityProviderFactory
 
     @Override
     public String getName() {
-        return "Skyfire JWT";
+        return "Skyfire IdP (token exchange)";
     }
 
     @Override
