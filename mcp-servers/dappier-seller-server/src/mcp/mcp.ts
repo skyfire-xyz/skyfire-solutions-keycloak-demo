@@ -84,10 +84,25 @@ const createAccountAndLoginWithKeycloak = async (
   })
 
   const authRes = (await auth.json()) as {
-    access_token: string
-    expires_in: number
-    token_type: string
-    issued_token_type: string
+    access_token?: string
+    expires_in?: number
+    token_type?: string
+    issued_token_type?: string
+    error?: string
+    error_description?: string
+  }
+
+  console.error('[Keycloak] token exchange response:', JSON.stringify(authRes))
+
+  if (!authRes.access_token) {
+    return {
+      content: [
+        {
+          type: 'text' as const,
+          text: `Keycloak token exchange failed: ${authRes.error ?? 'unknown error'} — ${authRes.error_description ?? 'no description'}`
+        }
+      ]
+    }
   }
 
   resToken = authRes.access_token
