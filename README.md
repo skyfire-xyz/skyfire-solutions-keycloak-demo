@@ -40,8 +40,9 @@ Keycloak is the default CIAM being used in this demo.
 Steps to be followed for setting up Keycloak: 
 1. Keycloak is an open-source identity and access management (IAM) solution.
 2. [Create a Keycloak server](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/keycloak)
-3. [Configuring Custom Token Exchange in Keycloak](https://www.keycloak.org/securing-apps/token-exchange). Build a jar file and import under [providers in Keycloak](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/keycloak/providers)
-4. [Follow code for Keycloak CTE](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/skyfire-keycloak-custom-code) 
+3. [Configuring Custom Token Exchange in Keycloak](https://www.keycloak.org/securing-apps/token-exchange)
+4. [Follow code for Keycloak CTE](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/skyfire-keycloak-custom-code)
+5. Build a jar file and import under [providers in Keycloak](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/keycloak/providers) 
 
 Visit the [Keycloak Admin UI Dashboard](http://localhost:8080)
 1. Create a new client
