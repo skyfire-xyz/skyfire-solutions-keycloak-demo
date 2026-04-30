@@ -9,14 +9,14 @@ This MCP Server has four tools -
 
 ## Getting Started
 
-- Set up an Auth0 account: 
-Auth0 is the default CIAM being used in this demo.
+- Set up Keycloak server: 
+Keycloak is the default CIAM being used in this demo.
 
-Steps to be followed for setting up Auth0:
-1. Visit the [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
-2. Create a new tenant
-3. Follow the [Auth0 official documentation for creating a new custom token exchange profile](https://auth0.com/docs/authenticate/custom-token-exchange)
-4. [Sample code for creating Auth0 Action](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/auth0/sample-action-code.ts) or refer to [Auth0 Marketplace implementation](https://github.com/dlozlla/opensource-marketplace/blob/feat-cte-template-skyfire-hardened/templates/skyfire-token-exchange-CUSTOM_TOKEN_EXCHANGE/code.js)
+Steps to be followed for setting up Keycloak:
+1. Locally run the [Keycloak server](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/keycloak) and visit the [Admin UI Dashboard](http://localhost:8080) 
+2. Create a new client
+3. Enable token-exchange for client
+4. Create custom IdP
    
 ## Installation
 
@@ -25,23 +25,21 @@ Steps to be followed for setting up Auth0:
     yarn install
     ```
 2. Follow the [Skyfire Platform Setup Guide](https://docs.skyfire.xyz/docs/introduction) to create seller account and seller services.
-3. Use the Auth0 Client ID, Client Secret, Domain etc details from Settings tab of your newly created Application in env variables in [Dappier MCP Server](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/mcp-servers/dappier-seller-server).
+3. Use the Keycloak Client ID, Client Secret etc details from your newly created Client in env variables in [Dappier MCP Server](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/mcp-servers/dappier-seller-server).
 4. Set up environment variables:
     Create a `.env` file in the directory. You can copy `.env.example` if one exists, or add the necessary variables manually.
 
     ```
     # .env
-    DAPPIER_SELLER_SERVICE_ID=<your_seller_service_id>
-    JWKS_URL=https://api.skyfire.xyz/.well-known/jwks.json
-    SKYFIRE_API_KEY=<your_dappier_seller_api_key>
-    JWT_ISSUER=https://app.skyfire.xyz
-    SKYFIRE_API_BASE_URL=https://api.skyfire.xyz
-    AUTH0_AUDIENCE=<your_auth0_api_audience>
-    AUTH0_CLIENT_ID=<your_auth0_application_client_id>
-    AUTH0_CLIENT_SECRET=<your_auth0_application_client_secret>
-    AUTH0_GRANT_TYPE=urn:ietf:params:oauth:grant-type:token-exchange
-    AUTH0_SUBJECT_TOKEN_TYPE=<your_custom_token_exchange_profile_subject_token_type>
-    AUTH0_URL=<your_auth0_application_domain>/oauth/token
+    API_HOST=https://api.skyfire.xyz
+    APP_ENV=production
+    KEYCLOAK_CLIENT_ID=<client-id>
+    KEYCLOAK_CLIENT_SECRET=<client-secret>
+    KEYCLOAK_GRANT_TYPE=urn:ietf:params:oauth:grant-type:token-exchange
+    KEYCLOAK_SUBJECT_TOKEN_TYPE=urn:ietf:params:oauth:token-type:jwt
+    KEYCLOAK_URL=http://localhost:8080/realms/<realm-name>/protocol/openid-connect/token
+    KEYCLOAK_SUBJECT_ISSUER='skyfire-idp-token-exchange'
+    SELLER_SKYFIRE_API_KEY=<skyfire-seller-api-key>
     ```
 
 ## Run the development server:

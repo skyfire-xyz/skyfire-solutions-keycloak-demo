@@ -16,53 +16,6 @@ const keycloakClientSecret = config.get('keycloakClientSecret')
 const datasetBaseUrl =
   'https://pub-303d212fa4df4073b8b38b3de4a72d89.r2.dev/Dappier'
 
-// const client = jwksClient({
-//   jwksUri: `${auth0Url}/.well-known/jwks.json`,
-//   cache: true,
-//   rateLimit: true,
-//   jwksRequestsPerMinute: 10,
-// });
-
-// function getKey(header: JwtHeader, callback: SigningKeyCallback) {
-//   client.getSigningKey(header.kid as string, (err, key) => {
-//     if (err) {
-//       callback(err);
-//       return;
-//     }
-//     const signingKey = key?.getPublicKey();
-//     callback(null, signingKey);
-//   });
-// }
-
-// async function validateKeycloakToken(
-//   accessToken: string
-// ): Promise<{ valid: true; payload: any } | { valid: false; reason: string }> {
-//   return new Promise((resolve) => {
-//     jwt.verify(
-//       accessToken,
-//       getKey,
-//       {
-//         algorithms: ["RS256"],
-//         issuer: `${auth0Url}/`,
-//         audience: auth0Audience,
-//       },
-//       (err, decoded) => {
-//         if (err) {
-//           let reason = err.message || "Invalid or unverifiable token";
-//           if (err.name === "TokenExpiredError") reason = "Token expired";
-//           if (err.name === "JsonWebTokenError")
-//             reason = `JWT error: ${err.message}`;
-//           if (err.name === "NotBeforeError") reason = "Token not active yet";
-
-//           resolve({ valid: false, reason });
-//           return;
-//         }
-//         resolve({ valid: true, payload: decoded });
-//       }
-//     );
-//   });
-// }
-
 const createAccountAndLoginWithKeycloak = async (
   kyaToken: string
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

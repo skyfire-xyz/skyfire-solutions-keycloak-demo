@@ -37,15 +37,16 @@ To run this demo,
 - Set up an Keycloak: 
 Keycloak is the default CIAM being used in this demo. 
 
-Steps to be followed for setting up Keycloak: //TODO
+Steps to be followed for setting up Keycloak: 
 1. Keycloak is an open-source identity and access management (IAM) solution.
-2. [Configuring Custom Token Exchange in Keycloak](https://www.keycloak.org/securing-apps/token-exchange)
-3. [Follow code for creating Keycloak](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/auth0/sample-action-code.ts) or refer to [Auth0 Marketplace implementation](https://github.com/dlozlla/opensource-marketplace/blob/feat-cte-template-skyfire-hardened/templates/skyfire-token-exchange-CUSTOM_TOKEN_EXCHANGE/code.js)
-Visit the [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
-1. Create a new realm
-2. Follow the [Auth0 official documentation for creating a new custom token exchange profile](https://auth0.com/docs/authenticate/custom-token-exchange)
-3. Use the Auth0 Client ID, Client Secret, Domain etc details from Settings tab of your newly created Application in env variables in [Dappier MCP Server](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/mcp-servers/dappier-seller-server).
-4. [Sample code for creating Auth0 Action](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/auth0/sample-action-code.ts) or refer to [Auth0 Marketplace implementation](https://github.com/dlozlla/opensource-marketplace/blob/feat-cte-template-skyfire-hardened/templates/skyfire-token-exchange-CUSTOM_TOKEN_EXCHANGE/code.js)
+2. [Create a Keycloak server](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/keycloak)
+3. [Configuring Custom Token Exchange in Keycloak](https://www.keycloak.org/securing-apps/token-exchange). Build a jar file and import under [providers in Keycloak](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/keycloak/providers)
+4. [Follow code for Keycloak CTE](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/skyfire-keycloak-custom-code) 
+
+Visit the [Keycloak Admin UI Dashboard](http://localhost:8080)
+1. Create a new client
+2. Enable token-exchange for client
+3. Create custom IdP
 
 ## Contents: 
 
