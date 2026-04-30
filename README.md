@@ -45,8 +45,15 @@ Steps to be followed for setting up Keycloak:
 
 Visit the [Keycloak Admin UI Dashboard](http://localhost:8080)
 1. Create a new client
+   ![create-client-1](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-client-1.png?raw=true)
+   ![create-client-2](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-client-2.png?raw=true)
 2. Enable token-exchange for client
+   ![enable-token-exchange](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/enable-token-exchange.png?raw=true)
 3. Create custom IdP
+   ![create-custom-idp-1](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-custom-idp-1.png?raw=true)
+   ![create-custom-idp-2](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-custom-idp-2.png?raw=true)
+   ![create-custom-idp-3](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-custom-idp-3.png?raw=true)
+   ![create-custom-idp-4](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-custom-idp-4.png?raw=true)
 
 ## Contents: 
 

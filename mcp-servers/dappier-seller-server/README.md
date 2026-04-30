@@ -15,8 +15,15 @@ Keycloak is the default CIAM being used in this demo.
 Steps to be followed for setting up Keycloak:
 1. Locally run the [Keycloak server](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/tree/main/custom-token-exchange/keycloak) and visit the [Admin UI Dashboard](http://localhost:8080) 
 2. Create a new client
+   ![create-client-1](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-client-1.png?raw=true)
+   ![create-client-2](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-client-2.png?raw=true)
 3. Enable token-exchange for client
+   ![enable-token-exchange](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/enable-token-exchange.png?raw=true)
 4. Create custom IdP
+   ![create-custom-idp-1](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-custom-idp-1.png?raw=true)
+   ![create-custom-idp-2](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-custom-idp-2.png?raw=true)
+   ![create-custom-idp-3](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-custom-idp-3.png?raw=true)
+   ![create-custom-idp-4](https://github.com/skyfire-xyz/skyfire-solutions-keycloak-demo/blob/main/static/images/create-custom-idp-4.png?raw=true)
    
 ## Installation
 
