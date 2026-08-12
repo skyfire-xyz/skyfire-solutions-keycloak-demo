@@ -31,7 +31,12 @@ module.exports = {
   settings: {
     'import/resolver': {
       typescript: {
-        project: './tsconfig.json' // Adjust the path to tsconfig.json's setup
+        project: './tsconfig.json', // Adjust the path to tsconfig.json's setup
+        // This project compiles as CJS, so resolve package exports the way tsc
+        // does (require/node). The default condition list tries `types` first,
+        // which the MCP SDK maps to `dist/esm/*.d.ts` -- a path that does not
+        // exist for its `.js`-suffixed deep imports.
+        conditionNames: ['require', 'node', 'default']
       }
     }
   }

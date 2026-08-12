@@ -302,14 +302,18 @@ const prepareAllTools = async (agentContext: AgentContext) => {
 
       for (const res of resources.resources) {
         const resource = await mcpClient.readResource({ uri: res.uri });
-        console.log(
-          `Resource loaded from ${server.url}:\n`,
-          resource.contents[0].text
-        );
+        // Resource contents are a text-or-blob union; this agent only feeds
+        // text resources into the conversation.
+        const [content] = resource.contents;
+        if (!content || !("text" in content)) {
+          console.warn(`${res.uri} has no text contents (skipping).`);
+          continue;
+        }
+        console.log(`Resource loaded from ${server.url}:\n`, content.text);
 
         agentContext.conversation_history.push({
           role: "system",
-          content: `${resource.contents[0].text}`,
+          content: `${content.text}`,
         });
       }
     } catch (err) {
