@@ -36,13 +36,12 @@ export async function handleMcpMessageUnsafe(
     // for new sessions, generate a unique ID
     const sessionId = v4()
 
-    // create a transport for this session, disable transport's own sessionId management,
+    // create a transport for this session, pinned to the ID we generated above,
     // since we store a separate transport for each session
     const transport = new StreamableHTTPServerTransport({
-      sessionIdGenerator: undefined
+      sessionIdGenerator: () => sessionId
     })
     const mcpServer = new DappierMCP()
-    transport.sessionId = sessionId
     await mcpServer.server.connect(transport)
     ServerState[sessionId] = {
       // apiKey,
