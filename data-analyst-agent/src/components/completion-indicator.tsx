@@ -8,6 +8,10 @@ import { Separator } from "@/components/ui/separator";
 
 import { cn } from "@/lib/utils";
 
+// The indicator renders nothing until hydration, so it only needs a
+// snapshot that flips once on the client; there is nothing to subscribe to.
+const subscribeToNothing = () => () => {};
+
 const completionVariants = cva(
   "flex items-center gap-2 rounded-lg p-3 text-sm transition-all duration-200 rounded-full border-[.75px] px-2.5 w-fit h-7 flex items-center text-xs font-medium mb-2 shadow-[inset_0px_-2.10843px_0px_0px_rgb(244,241,238),_0px_1.20482px_6.3253px_0px_rgb(244,241,238)]",
   {
@@ -60,11 +64,11 @@ export function CompletionIndicator({
   children,
   ...props
 }: CompletionIndicatorProps) {
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = React.useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false
+  );
 
   const icons = {
     success: <CheckCircle2 className="h-4 w-4 shrink-0 fill-green-400" />,
