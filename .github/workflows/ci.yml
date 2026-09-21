@@ -60,5 +60,10 @@ jobs:
           node-version: 22
           cache: yarn
           cache-dependency-path: mcp-servers/reporting-server/yarn.lock
+      - run: |
+          cat > .npmrc <<'EOF'
+          @skyfire-xyz:registry=https://registry.npmjs.org
+          //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+          EOF
       - run: yarn install --frozen-lockfile
       - run: yarn build
