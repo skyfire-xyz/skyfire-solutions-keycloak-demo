@@ -77,4 +77,5 @@ jobs:
           distribution: temurin
           java-version: 17
           cache: maven
+          cache-dependency-path: custom-token-exchange/skyfire-keycloak-custom-code/pom.xml
       - run: mvn -B package
