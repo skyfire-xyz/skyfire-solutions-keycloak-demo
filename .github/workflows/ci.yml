@@ -12,7 +12,6 @@ permissions:
   contents: read
 
 jobs:
-  # No private dependencies: this job runs on pull requests from forks.
   agent:
     name: agent
     runs-on: ubuntu-latest
@@ -23,36 +22,28 @@ jobs:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: 22
+          node-version: 24
           cache: yarn
           cache-dependency-path: data-analyst-agent/yarn.lock
       - run: yarn install --frozen-lockfile
       - run: yarn build
 
-  # Depends on the private @skyfire-xyz packages, so it cannot run on pull
-  # requests from forks. Each server's committed .npmrc points the scope at the
-  # registry; npm expands ${NPM_TOKEN} from the job environment. See CONTRIBUTING.md.
   dappier-seller-server:
     name: dappier-seller-server
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: mcp-servers/dappier-seller-server
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: 22
+          node-version: 24
           cache: yarn
           cache-dependency-path: mcp-servers/dappier-seller-server/yarn.lock
-      - name: Fail if npm credentials are missing
-        if: env.NPM_TOKEN == ''
-        run: |
-          echo "::error::NPM_TOKEN is unavailable, so the private @skyfire-xyz packages cannot be installed. Fork pull requests never receive secrets; Dependabot pull requests read the Dependabot secret store rather than Actions. See CONTRIBUTING.md."
-          exit 1
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile --ignore-scripts
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: yarn build
 
   reporting-server:
@@ -61,19 +52,14 @@ jobs:
     defaults:
       run:
         working-directory: mcp-servers/reporting-server
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: 22
+          node-version: 24
           cache: yarn
           cache-dependency-path: mcp-servers/reporting-server/yarn.lock
-      - name: Fail if npm credentials are missing
-        if: env.NPM_TOKEN == ''
-        run: |
-          echo "::error::NPM_TOKEN is unavailable, so the private @skyfire-xyz packages cannot be installed. Fork pull requests never receive secrets; Dependabot pull requests read the Dependabot secret store rather than Actions. See CONTRIBUTING.md."
-          exit 1
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile --ignore-scripts
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: yarn build
