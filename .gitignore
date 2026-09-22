@@ -1,3 +1,8 @@
 node_modules/
 .npmrc
+# These two hold no secret: they carry the literal string ${NPM_TOKEN}, which npm
+# expands from the environment when it reads the file. Both are required build
+# inputs -- each server's Dockerfile COPYs its .npmrc before `yarn install`.
+!mcp-servers/dappier-seller-server/.npmrc
+!mcp-servers/reporting-server/.npmrc
 .DS_Store

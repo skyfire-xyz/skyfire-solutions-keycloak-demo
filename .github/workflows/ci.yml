@@ -29,8 +29,9 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
 
-  # Depends on the private @skyfire-xyz packages, so it cannot run on fork
-  # pull requests. See CONTRIBUTING.md.
+  # Depends on the private @skyfire-xyz packages, so it cannot run on pull
+  # requests from forks. Each server's committed .npmrc points the scope at the
+  # registry; npm expands ${NPM_TOKEN} from the job environment. See CONTRIBUTING.md.
   dappier-seller-server:
     name: dappier-seller-server
     runs-on: ubuntu-latest
@@ -46,18 +47,14 @@ jobs:
           node-version: 22
           cache: yarn
           cache-dependency-path: mcp-servers/dappier-seller-server/yarn.lock
-      - name: Check npm credentials
+      - name: Fail if npm credentials are missing
+        if: env.NPM_TOKEN == ''
         run: |
-          if [ -z "$NPM_TOKEN" ]; then
-            echo "::error::NPM_TOKEN is not available to this run, so the private @skyfire-xyz packages cannot be installed."
-            echo "::error::GitHub does not expose secrets to pull requests opened from a fork. A maintainer must re-run this branch from the upstream repository. See CONTRIBUTING.md."
-            exit 1
-          fi
+          echo "::error::NPM_TOKEN is unavailable, so the private @skyfire-xyz packages cannot be installed. Fork pull requests never receive secrets; Dependabot pull requests read the Dependabot secret store rather than Actions. See CONTRIBUTING.md."
+          exit 1
       - run: yarn install --frozen-lockfile
       - run: yarn build
 
-  # Depends on the private @skyfire-xyz packages, so it cannot run on fork
-  # pull requests. See CONTRIBUTING.md.
   reporting-server:
     name: reporting-server
     runs-on: ubuntu-latest
@@ -73,17 +70,10 @@ jobs:
           node-version: 22
           cache: yarn
           cache-dependency-path: mcp-servers/reporting-server/yarn.lock
-      - name: Check npm credentials
+      - name: Fail if npm credentials are missing
+        if: env.NPM_TOKEN == ''
         run: |
-          if [ -z "$NPM_TOKEN" ]; then
-            echo "::error::NPM_TOKEN is not available to this run, so the private @skyfire-xyz packages cannot be installed."
-            echo "::error::GitHub does not expose secrets to pull requests opened from a fork. A maintainer must re-run this branch from the upstream repository. See CONTRIBUTING.md."
-            exit 1
-          fi
-      - run: |
-          cat > .npmrc <<'EOF'
-          @skyfire-xyz:registry=https://registry.npmjs.org
-          //registry.npmjs.org/:_authToken=${NPM_TOKEN}
-          EOF
+          echo "::error::NPM_TOKEN is unavailable, so the private @skyfire-xyz packages cannot be installed. Fork pull requests never receive secrets; Dependabot pull requests read the Dependabot secret store rather than Actions. See CONTRIBUTING.md."
+          exit 1
       - run: yarn install --frozen-lockfile
       - run: yarn build
