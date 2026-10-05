@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS base
+FROM node:24.21.0-alpine3.24 AS base
 
 # Stage 1: Install dependencies
 FROM base AS deps
