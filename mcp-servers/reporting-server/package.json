@@ -18,14 +18,14 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.{ts,tsx,js}\"",
     "format-check": "prettier --check \"src/**/*.{ts,js}\"",
-    "lint": "yarn eslint src --ext ts --max-warnings 0",
+    "lint": "yarn eslint src --max-warnings 0",
     "dev": "NODE_PATH=./ nodemon --watch src -e ts -x 'ts-node src/server.ts'"
   },
   "files": [
     "build"
   ],
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.31.0",
+    "@modelcontextprotocol/sdk": "1.32.0",
     "@skyfire-xyz/prettier-config-node": "3.0.0",
     "@skyfire-xyz/tsconfig": "2.0.0",
     "@types/express": "5.0.3",
@@ -34,26 +34,24 @@
     "convict": "6.2.5",
     "dd-trace": "5.131.1",
     "dotenv": "16.6.1",
-    "express": "4.21.2",
+    "express": "4.22.3",
     "helmet": "8.1.0",
     "openapi-fetch": "0.14.0",
     "pino": "9.11.0",
     "pino-datadog-transport": "3.0.6",
     "pino-http": "10.5.0",
     "typescript": "5.9.2",
-    "uuid": "11.1.0"
+    "uuid": "11.1.1",
+    "zod": "4.6.7"
   },
   "devDependencies": {
-    "@skyfire-xyz/eslint-config-node": "3.2.1",
+    "@skyfire-xyz/eslint-config-node": "3.2.2",
     "@types/convict": "6.1.6",
-    "eslint": "8.57.1",
+    "eslint": "9.39.5",
     "nodemon": "3.1.10",
     "pino-pretty": "13.1.1",
     "prettier": "3.6.2",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0"
-  },
-  "resolutions": {
-    "express/path-to-regexp": "0.1.13"
   }
 }
