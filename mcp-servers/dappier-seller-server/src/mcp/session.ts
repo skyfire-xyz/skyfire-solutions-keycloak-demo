@@ -29,7 +29,7 @@ export async function handleMcpMessageUnsafe(
   res: Response
 ): Promise<void> {
   // check if this is an initial connection request
-  const isInitRequest = req.body && req.body.method === 'initialize'
+  const isInitRequest = req.body?.method === 'initialize'
   logger.info({ req, body: req.body }, 'debug handle mcp message')
 
   if (isInitRequest) {
@@ -59,13 +59,15 @@ export async function handleMcpMessageUnsafe(
     const sessionId = req.headers['mcp-session-id']
     if (sessionId === undefined) {
       // if (req.headers.authorization === undefined) {
-        res
-          .status(401)
-          .header(
-            'www-authenticate',
-            `resource_metadata=${RESOURCE_METADATA_URL}/.well-known/oauth-protected-resource`
-          )
-        return
+      res
+        .status(401)
+        .header(
+          'www-authenticate',
+          `Bearer resource_metadata="${RESOURCE_METADATA_URL}/.well-known/oauth-protected-resource"`
+        )
+        .end()
+
+      return
       // }
     }
     if (typeof sessionId !== 'string') {

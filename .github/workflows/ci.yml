@@ -27,6 +27,7 @@ jobs:
           cache-dependency-path: data-analyst-agent/yarn.lock
       - run: yarn install --frozen-lockfile
       - run: yarn build
+      - run: yarn lint
 
   dappier-seller-server:
     name: dappier-seller-server
@@ -45,6 +46,7 @@ jobs:
           cache-dependency-path: mcp-servers/dappier-seller-server/yarn.lock
       - run: yarn install --frozen-lockfile
       - run: yarn build
+      - run: yarn lint
 
   reporting-server:
     name: reporting-server
@@ -63,6 +65,7 @@ jobs:
           cache-dependency-path: mcp-servers/reporting-server/yarn.lock
       - run: yarn install --frozen-lockfile
       - run: yarn build
+      - run: yarn lint
 
   keycloak-custom-code:
     name: keycloak-custom-code
