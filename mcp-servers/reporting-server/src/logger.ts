@@ -3,7 +3,14 @@ import { DDTransportOptions } from 'pino-datadog-transport'
 import { AxiosError, isAxiosError } from 'axios'
 import { Request } from 'express'
 import { pinoHttp, Options as HttpOptions } from 'pino-http'
-import { pino, Logger, TransportMultiOptions, LoggerOptions, stdSerializers, Level } from 'pino'
+import {
+  pino,
+  Logger,
+  TransportMultiOptions,
+  LoggerOptions,
+  stdSerializers,
+  Level
+} from 'pino'
 import { AppEnv, config } from './config'
 
 export type LogLevel = Level
@@ -119,15 +126,11 @@ export default logger
 const httpOptions: HttpOptions = {
   level: config.get('logLevel'),
   autoLogging: appEnv !== AppEnv.Test, // Disable request/response logging in test
-  customReceivedMessage: (req) => {
-    return `${req.method} ${req.url}`
-  },
-  customSuccessMessage: (req, res) => {
-    return `${req.method} ${(req as Request).originalUrl} ${res.statusCode}`
-  },
-  customErrorMessage: (req, res) => {
-    return `${req.method} ${req.url} ${res.statusCode}`
-  },
+  customReceivedMessage: (req) => `${req.method} ${req.url}`,
+  customSuccessMessage: (req, res) =>
+    `${req.method} ${(req as Request).originalUrl} ${res.statusCode}`,
+  customErrorMessage: (req, res) =>
+    `${req.method} ${req.url} ${res.statusCode}`,
   customLogLevel: (req, res) => {
     if (res.statusCode >= 400 && res.statusCode < 500) {
       return 'warn'

@@ -19,7 +19,6 @@ export function makeApp(): Express {
       verify: (req, _, buf, encoding) => {
         // save rawBody to req for stripe signature verification
         ;(req as RawBodyRequest).rawBody = buf.toString(
-          // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
           (encoding as BufferEncoding) || 'utf8'
         )
       }

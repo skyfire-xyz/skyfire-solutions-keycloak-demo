@@ -6,11 +6,8 @@ import * as dotenv from 'dotenv'
 const envFilePath = path.resolve(__dirname, '../../../.env.doppler.override')
 if (fs.existsSync(envFilePath)) {
   try {
-    const envConfig = dotenv.parse(fs.readFileSync(envFilePath))
-    for (const k in envConfig) {
-      process.env[k] = envConfig[k]
-    }
-  } catch (e) {
+    Object.assign(process.env, dotenv.parse(fs.readFileSync(envFilePath)))
+  } catch {
     // do nothing
   }
 }
