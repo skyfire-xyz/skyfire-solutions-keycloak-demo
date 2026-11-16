@@ -7,8 +7,8 @@
   "description": "The Reporting MCP Server",
   "author": "Skyfire",
   "main": "build/index.js",
-  "engine": {
-    "node": ">=20.16.0"
+  "engines": {
+    "node": ">=24.22.1"
   },
   "bin": {
     "reporting-mcp": "./build/index.js"
@@ -41,7 +41,7 @@
     "pino-datadog-transport": "3.0.6",
     "pino-http": "10.5.0",
     "typescript": "5.9.2",
-    "uuid": "11.1.1",
+    "uuid": "14.0.3",
     "zod": "4.6.7"
   },
   "devDependencies": {
